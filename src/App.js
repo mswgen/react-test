@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Users extends React.Component {
+  constructor(...args) {
+    super (...args);
+    this.state = {
+      fool: this.props.isFool
+    };
+  }
+  render () {
+    return (
+      <div>
+        <h2>{this.props.nick}</h2>
+    <button onClick={() => {
+      let x = this.state.fool
+      if (x === 'yes') {
+        this.setState({fool: 'no'});
+      } else {
+        this.setState({fool: 'yes'});
+      }
+    }}>{(() => {
+      if (this.state.fool === 'yes') {
+        return '바보'
+      } else {
+        return '천재';
+      }
+      })()}</button>
+      </div>
+    )
+  }
 }
-
-export default App;
+export default Users;
